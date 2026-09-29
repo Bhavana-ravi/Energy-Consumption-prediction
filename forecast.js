@@ -1,4 +1,7 @@
 import Papa from 'papaparse';
+import createArimaModule from './node_modules/arima/wasm/native-async.js';
+import arimaWasmBinary from './node_modules/arima/wrapper/native.bin.js';
+import loadARIMA from './node_modules/arima/load.js';
 
 const STORAGE_KEY = 'wattwise.daily-readings.v1';
 let arimaModule;
@@ -94,7 +97,7 @@ export function parseConsumptionCsv(file) {
 
 async function getArima() {
   if (!arimaModule) {
-    arimaModule = import('arima/async').then(async (module) => await (module.default ?? module));
+    arimaModule = createArimaModule({ wasmBinary: arimaWasmBinary }).then(loadARIMA);
   }
   return arimaModule;
 }

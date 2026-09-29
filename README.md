@@ -4,13 +4,13 @@ A GitHub Pages-ready household energy dashboard. React, browser-side ARIMA, CSV 
 
 ## Publish on GitHub Pages
 
-The production JavaScript bundles are prepared in the project root; no local commands or folders in GitHub are needed.
+Demo readings are generated automatically on first visit; no CSV upload is required. The production JavaScript bundle is prepared in the project root; no local commands or folders in GitHub are needed.
 
 1. In **Settings → Pages**, choose **Deploy from a branch**, then select `main` and `/(root)`.
-2. Upload or replace `index.html`, `app.js`, `async.js`, and `styles.css` directly in the repository root. Keep all other source files there too, then commit to `main`.
+2. Upload or replace `index.html`, `app.js`, and `styles.css` directly in the repository root. Keep all other source files there too, then commit to `main`.
 3. Wait for GitHub Pages to finish publishing, then open `https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/`.
 
-Do not upload `node_modules`, `.venv`, or generated build folders. When the app changes, replace the root `app.js` and `async.js` bundles as well as the source files.
+Do not upload `node_modules`, `.venv`, or generated build folders. When the app changes, replace the root `app.js` bundle as well as the source files.
 
 ## Important
 
