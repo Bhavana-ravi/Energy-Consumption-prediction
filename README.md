@@ -8,7 +8,7 @@ You do not need to install Node.js, run the app, or build it on your computer. G
 
 1. On GitHub, create a new **empty** repository. Use a regular project name such as `energy-outlook`; do not add a README, license, or `.gitignore` during repository creation.
 2. In that repository, open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**.
-3. Open the repository's **Code** tab, select **Add file → Upload files**, then drag the project files and folders from File Explorer into the upload area. Include `package.json`, `package-lock.json`, `index.html`, `src`, `public` if present, and `.github/workflows/deploy.yml`. In File Explorer, turn on **View → Show → Hidden items** to see `.github`.
+3. Open the repository's **Code** tab, select **Add file → Upload files**, then drag the project files from File Explorer into the upload area. Keep `App.jsx`, `forecast.js`, `main.jsx`, `styles.css`, `index.html`, `vite.config.js`, `package.json`, `package-lock.json`, `README.md`, and `sample_energy.csv` directly in the repository root. Also include `.github/workflows/deploy.yml` in its `.github/workflows` folder. In File Explorer, turn on **View → Show → Hidden items** to see `.github`.
 4. Do not upload `node_modules`, `.venv`, or `dist`; GitHub Actions creates the production build itself.
 5. Enter a commit message such as `Add energy outlook app`, select **Commit directly to the main branch**, and commit the upload.
 6. In the repository's **Actions** tab, wait for **Deploy to GitHub Pages** to finish successfully. The site will be available at `https://YOUR-USERNAME.github.io/YOUR-REPOSITORY/`. Future commits to `main` publish updates automatically.
