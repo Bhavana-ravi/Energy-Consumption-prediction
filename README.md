@@ -15,6 +15,13 @@ You do not need to install Node.js, run the app, or build it on your computer. G
 
 The workflow in `.github/workflows/deploy.yml` builds the static site and sets the repository subpath for project Pages sites. No local server or backend is needed.
 
+## Important
+
+- Upload `.github/workflows/deploy.yml` with the project files. Without it, GitHub Actions cannot publish the site.
+- The published Pages site is public. Do not put private meter readings or other personal data in the repository.
+- CSV readings selected in the site stay in that browser's local storage. They are not uploaded to GitHub or shared between devices. Clearing browser data removes them.
+- Forecasts are estimates based on the readings available in the browser, not official utility measurements or billing advice.
+
 ## CSV format and data storage
 
 Upload a CSV with a date/timestamp column and a numeric consumption column. Common headings such as `date`, `timestamp`, `usage`, `consumption`, `energy`, `kwh`, and `value` are recognized. Multiple readings on the same date are added together; gaps between readings are interpolated. At least 12 days of data are required. Uploaded readings are saved in the current browser's local storage and are not sent to a server. The included `sample_energy.csv` is an example upload; a generated sample profile is shown by default.
