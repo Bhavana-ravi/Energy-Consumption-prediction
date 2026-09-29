@@ -45,7 +45,7 @@ function formatNumber(value, digits = 1) {
 function buildChartData(payload) {
   const rows = payload.history.map((point) => ({ ...point, predicted: null }));
   if (rows.length) rows[rows.length - 1].predicted = rows[rows.length - 1].actual;
-  return [...rows, ...payload.forecast.map((point) => ({ ...point, actual: null }))];
+  return [...rows, ...payload.forecast.map((point) => ({ ...point, actual: null, forecastLabel: payload.model }))];
 }
 
 function ChartTooltip({ active, payload, label }) {
@@ -56,7 +56,7 @@ function ChartTooltip({ active, payload, label }) {
     <div className="chart-tooltip">
       <span>{formatDay(label)}</span>
       <strong>{formatNumber(amount, 2)} <small>kWh</small></strong>
-      <em>{row.actual == null ? 'ARIMA forecast' : 'Measured usage'}</em>
+      <em>{row.actual == null ? row.forecastLabel : 'Measured usage'}</em>
     </div>
   );
 }
@@ -239,7 +239,7 @@ export default function App() {
                 <div className="forecast-list">
                   {nextWeek.map((day, index) => <div className="forecast-row" key={day.date}><span className="forecast-day">{index === 0 ? 'Tomorrow' : formatDay(day.date, true)}</span><div className="forecast-track"><i style={{ width: `${Math.max(5, (day.predicted / maxForecast) * 100)}%` }} /></div><strong>{formatNumber(day.predicted)}<small>kWh</small></strong></div>)}
                 </div>
-                <div className="model-note"><span className="model-mark"><Waves size={15} /></span><div><strong>{payload?.model ?? 'ARIMA(2, 1, 2)'}</strong><small>Time-series model</small></div><span className="model-status">ACTIVE</span></div>
+                <div className="model-note"><span className="model-mark"><Waves size={15} /></span><div><strong>{payload?.model ?? 'ARIMA(2, 1, 2)'}</strong><small>{payload?.model_status === 'fallback' ? 'ARIMA unavailable' : 'Time-series model'}</small></div><span className="model-status">{payload?.model_status === 'fallback' ? 'BASELINE' : 'ACTIVE'}</span></div>
               </aside>
             </section>
 
